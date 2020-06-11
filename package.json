@@ -1,0 +1,11 @@
+{
+  "name": "hacker_news_job_notifier",
+  "version": "1.0.0",
+  "description": "Send an email when the latest 'Ask HN:' for jobs post is posted on Hacker News",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
