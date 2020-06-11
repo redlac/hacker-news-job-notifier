@@ -38,4 +38,4 @@ sendMailInterval = () => {
   });
 };
 
-setInterval(sendMailInterval, 5000);
+setInterval(sendMailInterval, 84000000);
