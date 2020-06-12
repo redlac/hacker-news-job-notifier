@@ -41,7 +41,7 @@ let pollHackerNews = async () => {
         const json = await response.json();
 
         let storyTitle = json.title;
-        if (storyTitle.includes('Ask HN'/*: Who is hiring?*/)){
+        if (storyTitle.includes('Ask HN: Who is hiring?')){
             let storyID = json.id;
             return 'https://news.ycombinator.com/item?id=' + storyID + '\n';
         }
@@ -81,4 +81,4 @@ sendMailInterval = async () => {
   });
 };
 
-setInterval(sendMailInterval, 15000);
+setInterval(sendMailInterval, 86400000);
