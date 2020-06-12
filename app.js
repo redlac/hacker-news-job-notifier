@@ -66,7 +66,7 @@ let mailOptions = {
   subject: "Latest 'Ask HN: Who's Hiring?' Post",
 };
 
-//Function that runs once per day to check for match HN posts
+//Function that runs every six hours to check for matching HN posts
 sendMailInterval = async () => {
 
   let finalURLs = await pollHackerNews();
@@ -81,4 +81,4 @@ sendMailInterval = async () => {
   });
 };
 
-setInterval(sendMailInterval, 86400000);
+setInterval(sendMailInterval, 21600000);
