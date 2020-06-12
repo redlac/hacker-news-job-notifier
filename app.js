@@ -5,7 +5,6 @@ if (process.env.NODE_ENV !== "production") {
 const nodemailer = require("nodemailer");
 const fetch = require('node-fetch');
 
-
 const app = require("http").createServer((req, res) => {
     res.writeHead(200, {'Content-Type': 'text/html'});
     res.end("Hacker-News-Jobs-Emailer-Sender-Running!!");
@@ -51,6 +50,7 @@ let pollHackerNews = async () => {
     return (await Promise.all(finalURLs)).filter(url => url !== undefined).toString();
 };
 
+//Set authorization for sending email
 let transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -59,18 +59,18 @@ let transporter = nodemailer.createTransport({
   },
 });
 
+//Set parameters for sending email
 let mailOptions = {
   from: process.env.FROM_EMAIL,
   to: process.env.FROM_EMAIL,
   subject: "Latest 'Ask HN: Who's Hiring?' Post",
 };
 
+//Function that runs once per day to check for match HN posts
 sendMailInterval = async () => {
 
   let finalURLs = await pollHackerNews();
-  console.log("finalURLs done", finalURLs);
   mailOptions.text = finalURLs;
-  console.log(mailOptions.text);
   console.log("sending mail...");
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
